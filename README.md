@@ -14,7 +14,5 @@ Welcome to the Rocket Team project, our first collaborative effort as a team in 
 3. **Project Timeline:** Create a timeline with milestones for design, implementation, testing, and documentation.
 
 
-## Support
-For issues or questions, contact team members or open an issue in the repository.
 
 Have fun!
