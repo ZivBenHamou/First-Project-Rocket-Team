@@ -1,8 +1,6 @@
 import java.util.Scanner;
-
-
 public class Function4 {
-    public static void naturalNumberPrint()
+    public static void main (String[] args) {
     {
         Scanner scanner = new Scanner(System.in);
         int startNumber,endNumber,swapNumberTemp;
@@ -39,4 +37,9 @@ public class Function4 {
             }
         }
     }
+}
+
+    private static void naturalNumberPrint() {
+    }
+
 }
