@@ -5,7 +5,7 @@ Welcome to the Rocket Team project, our first collaborative effort as a team in 
 ## Team Members
 - Ziv Ben Hamou
 - Or Zino 
-- Michael
+- Michael Vaknin
 - Tohar Nahmani
 
 ## Objectives
