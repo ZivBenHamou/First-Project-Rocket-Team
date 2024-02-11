@@ -1,12 +1,10 @@
 import java.util.Scanner;
 
-public class MainFunction
-{
+public class MainFunction {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        System.out.println(""); // שורה רווח
         System.out.println("Welcome User!");
 
         System.out.println("1 - Circle Circumference and Area");
@@ -22,20 +20,19 @@ public class MainFunction
         System.out.println("11 - Fibonacci Check");
         System.out.println("12 - Narcissistic Number Print");
         System.out.println("0 - End Program");
-        System.out.println(""); // שורה רווח
+
 
         System.out.println("Choose Calculation from the options above");
         choice = scanner.nextInt();
 
-        switch (choice)
-        {
+        switch (choice) {
             case 0:
                 break;
 
             case 1:
-              circleAreaAndCircumference();
+                circleAreaAndCircumference();
                 main(args);
-              break;
+                break;
 
             case 2:
                 tempConversion();
@@ -43,7 +40,7 @@ public class MainFunction
                 break;
 
             case 3:
-              //  factorialResult();
+                factorialResult();
                 main(args);
                 break;
             case 4:
@@ -79,7 +76,7 @@ public class MainFunction
                 main(args);
                 break;
             case 12:
-                //narcissiticCheck();
+                printNearestNarcissistic();
                 main(args);
                 break;
         }
@@ -104,51 +101,74 @@ public class MainFunction
 
     }
 
-    public static void tempConversion(){
+    public static void tempConversion() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println( "To caculate fahrenheit print 1 , To caculate celcius print 2 " ) ;
+        System.out.println("To calculate fahrenheit print 1 , To calculate celcius print 2 ");
         int choose = scanner.nextInt();
 
-        if ( choose==1 ) {
-            System.out.println( "Enter the number of celcius to caculate :");
+        if (choose == 1) {
+            System.out.println("Enter the number of celcius to calculate :");
             float celcius = scanner.nextFloat();
 
-            double result = celcius*1.8 + 32;
-            System.out.println( " at farenheit it will be "  +result);
+            double result = celcius * 1.8 + 32;
+            System.out.println(" at farenheit it will be " + result);
 
-        }
-        else if (choose==2){
-            System.out.println( "Enter the number of farenheit to caculate :");
+        } else if (choose == 2) {
+            System.out.println("Enter the number of farenheit to calculate :");
             float farenheit = scanner.nextFloat();
-            double result = (farenheit-32) /1.8;
-            System.out.println( " at celcius it will be " + result);
+            double result = (farenheit - 32) / 1.8;
+            System.out.println(" at celcius it will be " + result);
 
 
+        } else {
+            System.out.println("Wrong");
         }
-        else {
-            System.out.println( "Wrong");
-        }
-
 
 
     }
 
-    public static void naturalNumbersInRange()
-    {
+    public static void factorialResult() {
+        //קלט מהמשתמש: פונקציה זו מתחילה בלקיחת קלט מהמשתמש. לשם כך, היא משתמשת במחלקת Scanner כדי לקרוא מספר שלם מהמשתמש.
+
         Scanner scanner = new Scanner(System.in);
-        int startNumber,endNumber,swapNumberTemp;
+        int number;
+// בשלב הבא בדיקת תקינות הקלט: הפונקציה מבצעת בדיקה שהמספר שהוזן הוא חיובי ושלם. אם המספר שהוזן אינו חיובי, היא מבקשת מהמשתמש להזין שוב מספר, עד שיתקבל מספר חיובי.
+
+        do {
+            System.out.print("Please enter a positive integer: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("That's not an integer, try again:");
+                scanner.next(); // Skip invalid input
+            }
+            number = scanner.nextInt();
+        } while (number <= 0);
+
+        long factorial = calculateFactorial(number);
+        System.out.println("The factorial of " + number + " is: " + factorial);
+    }
+
+    public static long calculateFactorial(int number) {
+        //חישוב העצרת: לאחר קבלת מספר חיובי, הפונקציה מחשבת את העצרת של המספר הזה באמצעות לולאת for. הלולאה מכפילה את כל המספרים מ-1 ועד למספר שהוזן, ומחזירה את התוצאה.
+
+        long factorial = 1;
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
+    public static void naturalNumbersInRange() {
+        Scanner scanner = new Scanner(System.in);
+        int startNumber, endNumber, swapNumberTemp;
 
         System.out.println("Please Enter 2 Range Numbers");
-        startNumber=scanner.nextInt();
-        endNumber= scanner.nextInt();
+        startNumber = scanner.nextInt();
+        endNumber = scanner.nextInt();
 
-        if(startNumber==endNumber)
-        {
+        if (startNumber == endNumber) {
             System.out.println("You entered identical numbers. Please try again");
             naturalNumbersInRange();
-        }
-        else if (startNumber > endNumber)
-        {
+        } else if (startNumber > endNumber) {
             swapNumberTemp = endNumber;
             endNumber = startNumber;
             startNumber = swapNumberTemp;
@@ -160,41 +180,37 @@ public class MainFunction
                     System.out.println(i);
                 else startNumber++;
             }
-        }
-        else{
-            for(int i=startNumber;i<=endNumber;i++)
-            {
-                if(startNumber >= 0)
-                    System.out.println("|"+i+"|");
+        } else {
+            for (int i = startNumber; i <= endNumber; i++) {
+                if (startNumber >= 0)
+                    System.out.print("|" + i + "|");
                 else startNumber++;
             }
         }
     }
 
-    public static void primeNumberCheck()
-    {
+    public static void primeNumberCheck() {
         Scanner scanner = new Scanner(System.in);
-        int number,counter=0;
+        int number, counter = 0;
 
         System.out.println("Please Enter a Number");
-        number=scanner.nextInt();
+        number = scanner.nextInt();
 
-        for(int i=2;i<number;i++) {
-            if (number % i == 0){
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
                 System.out.println("This isn't Prime Number");
                 counter++;
                 break;
             }
         }
-        if(counter == 0)
+        if (counter == 0)
             System.out.println("This is Prime Number");
     }
 
-    public static void palindromeCheck()
-    {
+    public static void palindromeCheck() {
         Scanner scanner = new Scanner(System.in);
 
-        int inputNumber = 0;
+        int inputNumber;// = 0;
 
         // מבקש מהמשתמש להכניס מספר זוגי בעל 5 ספרות
         while (true) {
@@ -237,8 +253,7 @@ public class MainFunction
 
     }
 
-    public static void printPrimeNumInRange()
-    {
+    public static void printPrimeNumInRange() {
         Scanner scanner = new Scanner(System.in);
 
         // קליטת מספר התחלתי
@@ -284,8 +299,7 @@ public class MainFunction
 
     }
 
-    public static void gcdCheck()
-    {
+    public static void gcdCheck() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter two numbers , that you want to check the GCD :");
@@ -293,22 +307,21 @@ public class MainFunction
         int number2 = scanner.nextInt();
         int highestModule = 0;
 
-        for (int i =1 ; i<=number1 ; i++){
-            if (number1%i==0 && number2%i==0)
+        for (int i = 1; i <= number1; i++) {
+            if (number1 % i == 0 && number2 % i == 0)
                 highestModule = i;
         }
-        System.out.println("The highest gcd between the numbers is : " +  highestModule);
+        System.out.println("The highest gcd between the numbers is : " + highestModule);
 
     }
 
-    public static void quadraticEquationResult()
-    {
+    public static void quadraticEquationResult() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter number for a , b , c :");
-        int numA= scanner.nextInt();
-        int numB= scanner.nextInt();
-        int numC= scanner.nextInt();
+        int numA = scanner.nextInt();
+        int numB = scanner.nextInt();
+        int numC = scanner.nextInt();
 
         double sum = (numB * numB) - 4 * numA * numC;
 
@@ -322,45 +335,41 @@ public class MainFunction
                 System.out.println("X1 =" + result1 + " , X2 =" + result2);
 
             }
-        }
-        else {
+        } else {
             System.out.println("Math Error!");
         }
     }
 
-    public static void compoundInterest()
-    {
+    public static void compoundInterest() {
         //אם כל מחזור הוא חודש
         Scanner scanner = new Scanner(System.in);
 
-        float savings,tax;
-        double fixTax,fund,profit,earlyWithdraw=0.5;
-        int quarter=3;
+        float savings, interest;
+        double fixInterest, fund, profit, earlyWithdraw = 0.5;
+        int quarter = 3;
 
         System.out.println("Please enter your initial saving amount");
-        savings= scanner.nextFloat();
-        System.out.println("Please enter the monthly tax");
-        tax= scanner.nextFloat();
-        fund=savings;
-        fixTax=tax/100;
+        savings = scanner.nextFloat();
+        System.out.println("Please enter the monthly interest");
+        interest = scanner.nextFloat();
+        fund = savings;
+        fixInterest = interest / 100;
 
-        for(int i=1; i<=(quarter*12);i++)
-        {
-            if(i==quarter*4||i==quarter*8||i==quarter*12){
-                fund=fund+(fund*fixTax);
-                System.out.println("Your Saving after "+i+"month is "+fund);
-                System.out.println("No loss on early withdrawl");
+        for (int i = 1; i <= (quarter * 12); i++) {
+            if (i == quarter * 4 || i == quarter * 8 || i == quarter * 12) {
+                fund = fund + (fund * fixInterest);
+                System.out.println("Your Saving after " + i + "month is " + fund);
+                System.out.println("No loss on early withdrawal");
                 continue;
             }
-            fund=fund+(fund*fixTax);
-            System.out.println("Your Saving after "+i+"months is "+fund);
-            profit=fund-savings;
-            System.out.println("If you withdraw early you lose 50% profit ("+(profit*earlyWithdraw)+") , total after loss: "+(savings+profit*earlyWithdraw));
+            fund = fund + (fund * fixInterest);
+            System.out.println("Your Saving after " + i + "months is " + fund);
+            profit = fund - savings;
+            System.out.println("If you withdraw early you lose 50% profit (" + (profit * earlyWithdraw) + ") , total after loss: " + (savings + profit * earlyWithdraw));
         }
     }
 
-    public static void fibonacciCheck()
-    {
+    public static void fibonacciCheck() {
         Scanner scanner = new Scanner(System.in);
 
         // המשתמש מתבקש להכניס מספר
@@ -392,4 +401,52 @@ public class MainFunction
         return false;
     }
 
+    public static boolean isNarcissistic (int number)
+    {
+        int originalNumber = number;
+        int sum = 0;
+        int length = String.valueOf(number).length();
+
+        while (number > 0) {
+            int digit = number % 10;
+            sum += (int) Math.pow(digit, length);
+            number /= 10;
+        }
+
+        return sum == originalNumber;
     }
+    public static void printNearestNarcissistic() {
+        Scanner scanner = new Scanner(System.in);
+
+        int number;
+
+        do {
+            System.out.println("Please enter Positive Integer:");
+            number = scanner.nextInt();
+        }
+        while (number<0);
+
+
+        int lower = number - 1;
+        int higher = number + 1;
+
+        while (true) {
+            if (isNarcissistic(lower)) {
+                System.out.println(lower);
+                break;
+            } else if (isNarcissistic(higher)) {
+                System.out.println(higher);
+                break;
+            }
+            lower--;
+            higher++;
+        }
+    }
+}
+
+
+
+
+
+
+
