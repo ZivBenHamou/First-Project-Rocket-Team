@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class homeWork2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "To caculate fahrenheit print 1 , To caculate celcius print 2 " ) ;
+        int choose = scanner.nextInt();
+        degreeFarenheitCaculator( choose );
+
+    }
+
+
+    public static void degreeFarenheitCaculator (int choose ){
+        Scanner scanner = new Scanner(System.in);
+
+        if ( choose==1 ) {
+            System.out.println( "Enter the number of celcius to caculate :");
+           float celcius = scanner.nextFloat();
+
+            double result = celcius*1.8 + 32;
+            System.out.println( " at farenheit it will be "  +result);
+
+        }
+        else if (choose==2){
+            System.out.println( "Enter the number of farenheit to caculate :");
+            float farenheit = scanner.nextFloat();
+            double result = (farenheit-32) /1.8;
+            System.out.println( " at celcius it will be " + result);
+
+
+        }
+        else {
+            System.out.println( "Wrong");
+        }
+
+
+
+    }
+}
